@@ -8,10 +8,7 @@
         <div class="col-md-12">
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
-                {{ form.username.label_tag | bootstrap }}
-                {{ form.username | bootstrap }}
-                {{ form.password.label_tag | bootstrap }}
-                {{ form.password | bootstrap }}
+                {{ form | bootstrap }}
                 <input type="submit" value="login" />
                 <input type="hidden" name="next" value="{{ next }}" />
             </form>
