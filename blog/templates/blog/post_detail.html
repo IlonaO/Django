@@ -23,10 +23,14 @@
             <span class="glyphicon glyphicon-remove"></span></a>
             {% endif %}
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <hr>
             <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
         </div>
+    </div>
+    <div class="row">
         {% for comment in post.comments.all %}
         {% if user.is_authenticated or comment.approved_comment %}
         <div class="col-md-10">
@@ -44,8 +48,10 @@
             {% endif %}
         </div>
         {% endif %}
-        {% empty %}
+        {% empty %} 
+        <div class="col-md-12">
         <p>No comments here yet :(</p>
+        </div>
         {% endfor %}
     </div>
 </div>
