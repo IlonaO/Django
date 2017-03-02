@@ -1,6 +1,7 @@
-div.container-fluid.header-color {
-    background-color: rgba(255,255,0,0.4);
-}
 div.container {
     padding-bottom: 5%;
+    padding-top: 5%;
+}
+navbar {
+    padding-bottom: 50%;
 }

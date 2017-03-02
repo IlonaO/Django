@@ -4,12 +4,13 @@
 <div class="content">
     <div class="row">
         <div class="col-md-10">
-            <h1>{{ post.title }}</h1>
+            <h1 class="page-header">{{ post.title }}</h1>
             {% if post.published_date %}
-            <h6>{{ post.published_date }}</h6>
+            <h4>{{ post.published_date }}</h4>
             {% else %}
+            <h4>Saved: {{ post.created_date }}</h4>
             {% endif %}
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p class="lead">{{ post.text|linebreaksbr }}</p>
         </div>
         <div class="col-md-2">
             {% if user.is_authenticated %}<hr>
@@ -36,7 +37,7 @@
         <div class="col-md-10">
             <hr>
             <strong>{{ comment.author }}</strong>
-            <h6>{{ comment.created_date }}</h6>
+            <h3>{{ comment.created_date }}</h3>
             <p>{{ comment.text|linebreaks }}</p>
         </div>
         <div class="col-md-2">
@@ -50,7 +51,7 @@
         {% endif %}
         {% empty %} 
         <div class="col-md-12">
-        <p>No comments here yet :(</p>
+        <h3>No comments here yet :(</h3>
         </div>
         {% endfor %}
     </div>

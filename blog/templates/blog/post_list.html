@@ -6,10 +6,10 @@
     	<div class="row">
     	{% for post in posts %}
     		<div class="col-xs-12 col-md-6">
-    			<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
-    			<h6>{{ post.published_date }}</h6>
-    			<blockquote><h5>{{ post.text|linebreaksbr }}</h5></blockquote>
-    			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+    			<h1 class="page-header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    			<h4>{{ post.published_date }}</h4>
+    			<blockquote><p class="lead">{{ post.text|linebreaksbr }}</p></blockquote>
+    			<a href="{% url 'post_detail' pk=post.pk %}"><h3>Comments: {{ post.approved_comments.count }}</h3</a>
     		</div>
     	{% endfor %}
 		</div>
