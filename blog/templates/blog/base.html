@@ -29,7 +29,7 @@
                     {% if user.is_authenticated %}
                     <li> <a href="{% url 'post_draft_list' %}">Drafts  <span class="glyphicon glyphicon-edit"></span></a></li>
                     <li><a href="{% url 'post_new' %}">Add new  <span class="glyphicon glyphicon-plus"></span></a></li>
-                    <li><a href="{% url 'logout' %}">Hello {{ user.username }}  (Log out)</a></li>
+                    <li><a href="{% url 'logout' %}">Hello {{ request.user }}  (Log out)</a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">Log in  <span class="glyphicon glyphicon-lock"></span></a></li>
                     {% endif %}

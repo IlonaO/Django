@@ -2,8 +2,9 @@
 
 {% block content %}
 <div class="content">
-    {% for post in posts %}
 	<diw class="row">
+	
+    {% for post in posts %}
 		<div class="col-md-12">
 			<h1 class="page-header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <h4>created: {{ post.created_date|date:'d-m-Y' }}</h4>

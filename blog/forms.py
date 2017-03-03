@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment
+from django.core.exceptions import ObjectDoesNotExist
 
 class PostForm(forms.ModelForm):
 

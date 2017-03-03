@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'bootstrapform',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,3 +124,6 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'fake_emails')

@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load bootstrap %}
+
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                {{ form | bootstrap }}
+                <input type="submit" value="Log in!" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                    <a href="{% url 'password_reset' %}">Can't remember your password?</a>
+
+            </form>
+            {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <h4>You don't have an account? <br><br>No problem!<br><br>
+                <a class="btn btn-default" href="{% url 'create_user' %}">
+                    Sign in!</a><br><br>
+            </h4>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
