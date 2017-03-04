@@ -125,5 +125,15 @@ try:
 except ImportError:
     pass
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'fake_emails')
+# fake emails in logs
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'fake_emails')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_EMAIL='testowekonto2016@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testowekonto2016@gmail.com'
+EMAIL_HOST_PASSWORD = 'hoppa123'
+EMAIL_USE_TLS = True
