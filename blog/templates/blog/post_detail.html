@@ -26,6 +26,20 @@
         </div>
     </div>
     <div class="row">
+        <nav aria-label="...">
+            <ul class="pager">
+                {% if prev_post_id %}
+                <li class="previous"><a href="{% url 'post_detail' pk=prev_post_id %}">Previous</a>
+                    {% else %}sss</li>
+                {% endif %}
+            {% if next_post_id %}
+                <li class="next"><a href="{% url 'post_detail' pk=next_post_id %}">Next</a>
+                    {% else %}fff</li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <hr>
             <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>

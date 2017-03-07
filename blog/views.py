@@ -1,10 +1,12 @@
-from django.utils import timezone
-from .models import Post, Comment
-from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, CommentForm
-from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import redirect
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from django.http import HttpResponseForbidden
+
+from .forms import PostForm, CommentForm
+from .models import Post, Comment
 
 
 def post_list(request):
@@ -13,7 +15,26 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+
+    g = list(Post.objects.filter(published_date__isnull=False).order_by('-published_date') \
+        .values_list('pk', flat=True))
+
+    try:
+        next_post_id = g[g.index(int(pk)) + 1]
+    except IndexError:
+        next_post_id = None
+
+    try:
+        prev_post_id = g[g.index(int(pk)) - 1]
+    except IndexError:
+        prev_post_id = None
+
+    if post.published_date:
+        context = {'post': post,
+            'next_post': next_post_id, 'prev_post': prev_post_id}
+        return render(request, 'blog/post_detail.html', context)
+    else:
+        return HttpResponseForbidden()
 
 @login_required()
 def post_new(request):
