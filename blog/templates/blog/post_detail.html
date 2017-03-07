@@ -13,7 +13,7 @@
             <p class="lead">{{ post.text|linebreaksbr }}</p>
         </div>
         <div class="col-md-2">
-            {% if user.is_authenticated %}<hr>
+            {% if user.is_superuser %}<hr>
             <!--if post is a draft Publish button won't be visible-->
             {% if post.published_date %}
             {% else %}<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">
@@ -33,7 +33,7 @@
     </div>
     <div class="row">
         {% for comment in post.comments.all %}
-        {% if user.is_authenticated or comment.approved_comment %}
+        {% if user.is_superuser or comment.approved_comment %}
         <div class="col-md-10">
             <hr>
             <strong>{{ comment.author }}</strong>

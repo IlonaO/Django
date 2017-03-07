@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-5">
+            <h1 class="page-header">My informations</h1>
+            <p class="lead">Username: {{ user.username }}<br>
+                Email: {{ user.email }}</p>
+
+            <h1 class="page-header">My comments</h1>
+            {% for comment in comments %}
+                <h4>{{ comment.created_date }}</h4>
+                <p>{{ comment.text }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-7">
+            <h1 class="page-header">My posts</h1>
+            {% for post in posts %}
+                <h3 class="page-header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+    			<h4>Published: {{ post.published_date }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+    {%  endif %}
+{% endblock %}    

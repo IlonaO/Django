@@ -4,8 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from .forms import UserRegisterForm
-
-
+from blog.models import Post, Comment
 
 def create_user(request):
     if request.method == 'POST':
@@ -13,22 +12,32 @@ def create_user(request):
         if form.is_valid():
             form.save()
             return render_to_response(
-                'create_success.html',)
+                'create_success.html', )
     else:
         form = UserRegisterForm()
     return render(request, 'create_user.html', {
         'form': form,
     })
 
+
 def create_success(request):
     return render_to_response(
-    'create_success.html',
-)
+        'create_success.html',
+    )
+
 
 def reset_pass(request):
     template = loader.get_template("reset_pass.html")
     context = {
-        'output' : ''
-        }
+        'output': ''
+    }
 
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))
+
+
+def my_account(request):
+    logged_in_user = request.user
+    logged_in_user_posts = Post.objects.filter(author=logged_in_user)
+    logged_in_user_comments = Comment.objects.filter(author=logged_in_user)
+
+    return render(request, 'my_account.html', {'posts': logged_in_user_posts, 'comments': logged_in_user_comments})
