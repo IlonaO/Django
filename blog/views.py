@@ -16,22 +16,19 @@ def post_list(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
-    g = list(Post.objects.filter(published_date__isnull=False).order_by('-published_date') \
-        .values_list('pk', flat=True))
-
-    try:
-        next_post_id = g[g.index(int(pk)) + 1]
-    except IndexError:
-        next_post_id = None
-
-    try:
-        prev_post_id = g[g.index(int(pk)) - 1]
-    except IndexError:
-        prev_post_id = None
-
     if post.published_date:
+        g = list(Post.objects.filter(published_date__isnull=False).order_by('-published_date') \
+        .values_list('pk', flat=True))
+        idx = g.index(int(pk))
+        next_post_id = g[idx + 1] if idx + 2 < len(g) else None
+
+        prev_post_id = g[idx - 1] if idx else None
+
         context = {'post': post,
-            'next_post': next_post_id, 'prev_post': prev_post_id}
+            'next_post_id': next_post_id, 'prev_post_id': prev_post_id}
+        return render(request, 'blog/post_detail.html', context)
+    elif post.created_date:
+        context = {'post': post}
         return render(request, 'blog/post_detail.html', context)
     else:
         return HttpResponseForbidden()

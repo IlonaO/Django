@@ -25,20 +25,26 @@
             {% endif %}
         </div>
     </div>
+    {% if post.published_date %}
     <div class="row">
+        {{ prev_post }}
+
         <nav aria-label="...">
             <ul class="pager">
                 {% if prev_post_id %}
-                <li class="previous"><a href="{% url 'post_detail' pk=prev_post_id %}">Previous</a>
-                    {% else %}sss</li>
+                <li class="previous"><a href="{% url 'post_detail' prev_post_id %}">Previous</a></li>
+                    {% else %}
+                    <li class="previous disabled"><a href=""><span aria-hidden="true"></span>Previous</a></li>
                 {% endif %}
             {% if next_post_id %}
-                <li class="next"><a href="{% url 'post_detail' pk=next_post_id %}">Next</a>
-                    {% else %}fff</li>
+                <li class="next"><a href="{% url 'post_detail' next_post_id %}">Next</a></li>
+                {% else %}
+                <li class="next disabled"><a href=""><span aria-hidden="true"></span>Next</a></li>
                 {% endif %}
             </ul>
         </nav>
     </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-12">
             <hr>
