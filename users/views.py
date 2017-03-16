@@ -40,4 +40,5 @@ def my_account(request):
     logged_in_user_posts = Post.objects.filter(author=logged_in_user)
     logged_in_user_comments = Comment.objects.filter(author=logged_in_user)
 
-    return render(request, 'my_account.html', {'posts': logged_in_user_posts, 'comments': logged_in_user_comments})
+    return render(request, 'my_account.html', {
+        'posts': logged_in_user_posts, 'comments': logged_in_user_comments})
