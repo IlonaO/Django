@@ -1,5 +1,5 @@
 import time
-from django.test import TestCase
+from django.test import TestCase, LiveServerTestCase
 from selenium import webdriver
 
 class BasicTestWithSelenium(TestCase):
@@ -28,3 +28,12 @@ class BasicTestWithSelenium(TestCase):
         draft_link = self.driver.find_element_by_partial_link_text('Log in').text
         self.assertEqual('Log in', draft_link)
         time.sleep(2)
+
+class PostsAndCommentsTest(LiveServerTestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+
+    def tearDown(self):
+        self.driver.quit()
+
+    def test_if_authenticated_user_can_add_new_post(self):

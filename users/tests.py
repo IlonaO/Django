@@ -1,30 +1,52 @@
 import time
-from django.test import TestCase
+from django.test import LiveServerTestCase
 from django.test.client import Client
 from django.contrib.auth.models import User
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
-class LoggingInTest(TestCase):
+class LoggingInTest(LiveServerTestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.test_user = User.objects.create_user('admin',
-                                        'test@test.com',
-                                        'secret666')
-        self.test_user.save()
+        # self.test_user = User.objects.create_user(username="someone",
+        #                                      email="test2@test.com",
+        #                                      password='somepassword')
+        # selftest_user.save()
+        self.username = 'cathycat'
+        self.email = 'test@test.com'
+        self.password = 'secret666'
 
     def tearDown(self):
         self.driver.quit()
 
-    def test_logging_in(self):
-        """Verifies logging in authenticated user"""
+    def test_registering_and_logging_in(self):
+        """Testing new user registering and verifies logging in and out authenticated user"""
 
-        self.driver.get('http://127.0.0.1:8000/user/login/')
+        self.driver.get(self.live_server_url + '/user/create/')
+        time.sleep(2)
+        username = self.driver.find_element_by_id('id_username')
+        username.send_keys(self.username)
+        email = self.driver.find_element_by_id('id_email')
+        email.send_keys(self.email)
+        password = self.driver.find_element_by_id('id_password1')
+        password.send_keys(self.password)
+        password = self.driver.find_element_by_id('id_password2')
+        password.send_keys(self.password)
+        time.sleep(2)
+        self.driver.find_element_by_xpath('//input[@value="Create!"]').click()
+        time.sleep(2)
+
+    def test_logging_in(self):
+        self.driver.get(self.live_server_url + '/user/login/')
         time.sleep(1)
         username = self.driver.find_element_by_id('id_username')
-        username.send_keys('kopytko')
+        username.send_keys(self.username)
         password = self.driver.find_element_by_id('id_password')
-        password.send_keys('haslo')
-        time.sleep(1)
+        password.send_keys(self.password)
+        time.sleep(2)
         self.driver.find_element_by_xpath('//input[@value="Log in!"]').click()
-        time.sleep(3)
+        time.sleep(2)
+        # log out -> first toggle dropdown menu
+        self.driver.find_element_by_class_name('dropdown-toggle').click()
+        time.sleep(1)
+        self.driver.find_element_by_partial_link_text('Log out').click()
+        time.sleep(2)
