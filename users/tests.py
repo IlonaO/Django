@@ -1,3 +1,4 @@
+import json
 import time
 
 from django.test import LiveServerTestCase, TestCase
@@ -6,6 +7,7 @@ from django.contrib.auth.models import User
 from selenium import webdriver
 
 
+# @attr('db')
 # class SeleniumLoggingInTest(LiveServerTestCase):
 # 	def setUp(self):
 # 		self.driver = webdriver.Chrome()
@@ -71,6 +73,7 @@ from selenium import webdriver
 # 		self.driver.find_element_by_partial_link_text('Log out').click()
 
 
+# @attr('db')
 class LoggingInTest(TestCase):
 	def setUp(self):
 		self.username = 'someone'
@@ -105,25 +108,36 @@ class LoggingInTest(TestCase):
 									{'username': 'otheruser', 'email': 'test@email.com',
 									 'password1': self.password, 'password2': self.password})
 		self.assertEqual(response.status_code, 200)
-		self.assertEqual(response.templates[0].name, 'create_success.html')
+		self.assertTemplateUsed(response, 'create_success.html')
 
 	def test_create_user_with_existing_user(self):
-		response = self.client.post('/user/create/', {'username': self.username, 'password': self.password})
+		response = self.client.post('/user/create/',
+									{'username': self.username, 'email': self.email,
+									 'password1': self.password, 'password2': self.password})
 		self.assertEqual(response.status_code, 200)
-		self.assertEqual(response.templates[0].name, 'create_user.html')
-		self.assertEqual(response.context['form'].errors['username'],
-						 ['A user with that username already exists.'])
+		self.assertTemplateUsed(response, 'create_user.html')
+		self.assertFormError(response, 'form', 'username', 'A user with that username already exists.')
+
+	def test_create_user_error(self):
+		response = self.client.get('/user/create/',
+									{'username': 'user', 'email': 'some@mail.pl',
+									 'password1': self.password, 'password2': self.password})
+		self.assertEqual(response.status_code, 200)
+		self.assertTemplateUsed(response, 'create_user.html')
 
 	def test_create_success(self):
 		response = self.client.post('/user/create/create_success/')
 		self.assertEqual(response.status_code, 200)
-		self.assertEqual(response.templates[0].name, 'create_success.html')
+		self.assertTemplateUsed(response, 'create_success.html')
 
 	def test_reset_pass(self):
 		response = self.client.post('/user/password/reset')
 		self.assertEqual(response.status_code, 200)
+		self.assertTrue(response.is_rendered)
+		# self.assertContains(response.rendered_content, 'Reset password')
+		self.assertTemplateUsed(response, 'reset_pass_form.html')
 		# self.assertEqual(response.context['form'])
-		raise Exception(response.context['form'])
+		# raise Exception(response.template_name, response.rendered_content)
 
 	def test_my_account(self):
 		self.client.login(username=self.username, password=self.password)

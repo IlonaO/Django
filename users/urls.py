@@ -14,7 +14,7 @@ urlpatterns = patterns('',
                            {'next_page': '/'}, name='logout'),
                        url(r'^password/reset$',
                            auth_views.password_reset,
-                           {'template_name': 'form.html',
+                           {'template_name': 'reset_pass_form.html',
                                'post_reset_redirect': 'reset_pass'},
                            name='password_reset'),
                        url(r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/'

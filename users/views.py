@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from .forms import UserRegisterForm
 from blog.models import Post, Comment
 
+
 def create_user(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
