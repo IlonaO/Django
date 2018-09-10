@@ -1,5 +1,6 @@
 from django.conf.urls import url
 
+from apps.blog.api import PostsResource
 from . import views
 
 urlpatterns = [
@@ -13,4 +14,7 @@ urlpatterns = [
 	url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
 	url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
 	url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
+	url(r'^vue_posts/$', views.vue_base, name='vue_base'),
+	url(r'^xhr/posts/', PostsResource.as_list(), name='vue_posts_list'),
+	url(r'^xhr/post/', PostsResource.as_detail(), name='vue_post'),
 ]

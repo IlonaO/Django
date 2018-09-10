@@ -10,6 +10,7 @@ Komponent używany do wyświetlenia postów
 
 <template>
     <div class="posts-container">
+        <div>Posts will be here</div>
         <post-element></post-element>
     </div>
 </template>

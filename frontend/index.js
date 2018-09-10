@@ -12,18 +12,18 @@ import Posts from './components/posts.vue';
 import PostElement from './components/post-element.vue'
 
 // Run app
-new Vue({
-    el: '#vue-app',
+const app = new Vue({
+    el: '#app',
     components: {
         Posts,
         PostElement
-    },
-    data () {
-        return {}
-    },
-    created () {
-    },
-    mounted () {},
-    computed: {},
-    methods: {}
+    }
+    // data () {
+    //     return {}
+    // },
+    // created () {
+    // },
+    // mounted () {},
+    // computed: {},
+    // methods: {}
 });
