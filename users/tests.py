@@ -7,24 +7,16 @@ from nose.plugins.attrib import attr
 from selenium import webdriver
 
 
-@attr('db')
+@attr('db', 'selenium_test')
 class SeleniumLoggingInTest(LiveServerTestCase):
 	def setUp(self):
 		self.driver = webdriver.Chrome()
-		# self.test_user = User.objects.create_user(username="someone",
-		#                                      email="test@test.com",
-		#                                      password='somepassword')
-		# self.test_user.save()
-		# self.user = User.objects.get(username="someone")
-		# self.user.delete()
 		self.username = 'someone'
 		self.email = 'test@test.com'
 		self.password = 'somepassword'
 
 	def tearDown(self):
 		self.driver.quit()
-
-	# self.test_user.delete()
 
 	def test_registering_and_logging_in(self):
 		"""Verifies new user registering and logging in and out authenticated user"""
