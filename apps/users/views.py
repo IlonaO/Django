@@ -1,10 +1,10 @@
-from django.template import loader
-from django.shortcuts import render
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.shortcuts import render_to_response
+from django.template import loader
+
+from apps.blog.models import Post, Comment
 from .forms import UserRegisterForm
-from blog.models import Post, Comment
 
 
 def create_user(request):

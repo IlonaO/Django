@@ -1,0 +1,38 @@
+{
+  "name": "django",
+  "version": "1.0.0",
+  "description": "First Django project with Django Girls You can see the result here: supercookiecat.herokuapp.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IlonaO/Django.git"
+  },
+  "author": "Ilona Osuch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IlonaO/Django/issues"
+  },
+  "homepage": "https://github.com/IlonaO/Django#readme",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "bootstrap-sass": "^3.3.7",
+    "css-loader": "^1.0.0",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.0",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^15.4.1",
+    "webpack": "^4.18.0"
+  }
+}

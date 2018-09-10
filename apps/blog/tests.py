@@ -1,14 +1,12 @@
-import time
 from datetime import datetime, timezone
 
-from django.test import TestCase, LiveServerTestCase
-from django.test.client import Client
-from django.contrib.auth.models import User
-from nose.plugins.attrib import attr
-from selenium import webdriver
-
 from blog.forms import PostForm, CommentForm
-from blog.models import Post, Comment
+from django.contrib.auth.models import User
+from django.test import TestCase
+from django.test.client import Client
+from nose.plugins.attrib import attr
+
+from apps.blog.models import Post, Comment
 
 
 @attr('db')
