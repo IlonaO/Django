@@ -1,5 +1,6 @@
 decorator==4.0.11
 Django==1.8
+restless==2.1.1
 django-bootstrap-form==3.2.1
 gunicorn==19.6.0
 ipython==5.3.0
