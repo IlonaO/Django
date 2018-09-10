@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseNotFound
 
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
@@ -32,7 +32,7 @@ def post_detail(request, pk):
 		context = {'post': post}
 		return render(request, 'blog/post_detail.html', context)
 	else:
-		return HttpResponseForbidden()
+		return HttpResponseNotFound()
 
 
 @login_required()
