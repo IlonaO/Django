@@ -3,14 +3,13 @@ Komponent używany do wyświetlenia postów
 </doc>
 
 <style lang="sass" rel="stylesheet/sass">
-/*@import "../base.sass"*/
 .posts-container
   background-color: red
 </style>
 
 <template>
     <div class="posts-container">
-        <div>Posts will be here</div>
+        <div>Posts</div>
         <post-element></post-element>
     </div>
 </template>
@@ -26,13 +25,19 @@ export default {
     props: [],
     data () {
         return {
+            posts: null,
         }
     },
-    computed: {
+    created() {
+        this.fetch();
     },
     methods: {
-    },
-    mounted () {
+        fetch () {
+            this.axios.get('get_posts/', {baseURL: '/xhr/', params: {}})
+                .then((response) => {
+                console.log(response);
+            })
+        }
     }
 
 }

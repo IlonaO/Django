@@ -1,17 +1,16 @@
 <doc>
-Komponent używany do wyświetlenia postów
+Komponent używany do wyświetlenia pojedynczego posta
 </doc>
 
 <style lang="sass" rel="stylesheet/sass">
-/*@import "../base.sass"*/
-.posts-container
+.post-element-container
   background-color: red
 </style>
 
 <template>
-    <div class="posts-container">
-        post
-        <post-element></post-element>
+    <div class="post-element-container">
+        <p>post</p>
+        {{ post }}
     </div>
 </template>
 
@@ -19,17 +18,10 @@ Komponent używany do wyświetlenia postów
 
 export default {
     name: 'post-element',
-    props: [],
+    props: ['post'],
     data () {
         return {
         }
     },
-    computed: {
-    },
-    methods: {
-    },
-    mounted () {
-    }
-
 }
 </script>
