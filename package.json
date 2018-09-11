@@ -6,16 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --colors --hide-modules --watch --display-error-details"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IlonaO/Django.git"
-  },
   "author": "Ilona Osuch",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/IlonaO/Django/issues"
-  },
-  "homepage": "https://github.com/IlonaO/Django#readme",
   "dependencies": {
     "autoprefixer": "^7.1.6",
     "axios": "^0.15.3",

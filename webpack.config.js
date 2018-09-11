@@ -7,8 +7,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
   plugins: [new BundleTracker({filename: './webpack-stats.json'}), extract_css],
   entry: {
-    vue: './frontend/index.js',
-    //base: './frontend/main.sass'
+    vue: './frontend/index.js'
   },
   output: {
     path: path.resolve(__dirname, './statics'),
@@ -28,11 +27,6 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader?cacheDirectory',
-        exclude: /node_modules\/(?!(dom7|swiper)\/).*/,
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

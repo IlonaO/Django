@@ -16,11 +16,6 @@ module.exports = function (config) {
         browserDisconnectTolerance: 1, // default 0
         browserNoActivityTimeout: 40000, //default 10000
 
-        // plugins: [
-        //     'karma-coverage',
-        //     'karma-webpack'
-        // ],
-
         files: [
             // './frontend/config_test.js',
             './frontend/index.js',
@@ -48,25 +43,6 @@ module.exports = function (config) {
             ChromeHeadless: {
                 base: 'Chrome',
                 flags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
-            },
-            PhantomJS_custom: {
-                base: 'PhantomJS',
-                options: {
-                    viewportSize: {
-                        width: 1440,
-                        height: 900
-                    },
-                    customHeaders: {
-                        DNT: "1"
-                    },
-                    windowName: 'my-window',
-                    settings: {
-                        webSecurityEnabled: false,
-                        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36"
-                    },
-                },
-                flags: ['--load-images=true', '--debug=false', '--disk-cache=false'],
-                debug: false
             }
         },
         webpack: webpackConfig,
