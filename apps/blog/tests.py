@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from blog.forms import PostForm, CommentForm
+from apps.blog.forms import PostForm, CommentForm
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client

@@ -11,8 +11,8 @@ from selenium import webdriver
 class SeleniumLoggingInTest(LiveServerTestCase):
 	def setUp(self):
 		self.driver = webdriver.Chrome()
-		self.username = 'someone'
-		self.email = 'test@test.com'
+		self.username = 'seleniumuser'
+		self.email = 'selenium@test.com'
 		self.password = 'somepassword'
 
 	def tearDown(self):
@@ -58,10 +58,11 @@ class SeleniumLoggingInTest(LiveServerTestCase):
 		password = self.driver.find_element_by_id('id_password')
 		password.send_keys(self.password)
 		self.driver.find_element_by_xpath('//input[@value="Log in!"]').click()
-		# time.sleep(2)
+		time.sleep(2)
 		more_button = self.driver.find_element_by_class_name('dropdown-toggle')
 		assert more_button.text == "More"
 		more_button.click()
+		time.sleep(4)
 		self.driver.find_element_by_partial_link_text('Log out').click()
 
 
