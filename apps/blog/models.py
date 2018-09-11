@@ -21,6 +21,15 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 
+	def to_dict(self, **kwargs):
+		return {
+			'id': self.id,
+			'author': self.author.username,
+			'title': self.title,
+			'text': self.text,
+			'created_date': self.created_date
+		}
+
 
 class Comment(models.Model):
 	post = models.ForeignKey('blog.Post', related_name='comments')
@@ -35,3 +44,12 @@ class Comment(models.Model):
 
 	def __str__(self):
 		return self.text
+
+	def to_dict(self, **kwargs):
+		return {
+			'post': self.post,
+			'author': self.author.username,
+			'text': self.text,
+			'created_date': self.created_date,
+			'approved_comment': self.approved_comment
+		}
