@@ -1,3 +1,1 @@
-# Django
-First Django project with Django Girls
-You can see the result here: supercookiecat.herokuapp.com
+Django app with Vue.js and many tests for master degree
