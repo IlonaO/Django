@@ -26,6 +26,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
+                <li> <a href="{% url 'vue_posts' %}">Vue  <span class="glyphicon glyphicon-send">
+                        </span></a></li>
                     {% if user.is_superuser %}
                     <li> <a href="{% url 'post_draft_list' %}">Drafts  <span class="glyphicon glyphicon-edit">
                         </span></a></li>

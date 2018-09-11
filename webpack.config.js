@@ -10,8 +10,8 @@ module.exports = {
     vue: './frontend/index.js'
   },
   output: {
-    path: path.resolve(__dirname, './statics'),
-    publicPath: '/statics',
+    path: path.resolve(__dirname, './static'),
+    publicPath: '/static',
     filename: 'js/[name].js'
   },
   module: {

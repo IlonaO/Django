@@ -113,3 +113,8 @@ def comment_remove(request, pk):
 	post_pk = comment.post.pk
 	comment.delete()
 	return redirect('post_detail', pk=post_pk)
+
+
+def vue_posts(request):
+	context = []
+	return render(request, 'blog/base_vue.html', context)
