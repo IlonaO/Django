@@ -1,14 +1,21 @@
-{% load i18n  %}
+{% extends "vue_base.html" %}
+{% load i18n %}
+
+{% block head %}
+<meta charset="UTF-8">
+<meta name="description" content="{% block description %}{% endblock description %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Vue{% endblock title %}</title>
+{% endblock head %}
+{% block extra_head %}{% endblock extra_head %}
 
 {% block content %}
-    jjjj
-    <div id="app">
-        <posts></posts>
-    </div>
+
+    base_vue
+
+    <posts></posts>
 {% endblock content %}
 
-
 {% block body_scripts %}
-    <script type="text/javascript">
-    </script>
+    {{ block.super }}
 {% endblock body_scripts %}

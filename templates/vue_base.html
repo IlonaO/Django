@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/vue.css" %}"/>
+{% endblock %}
+
+
+{% block body %}
+    kkk
+    <div id="vue-app">
+
+    {% block content_all %}
+        <div id="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    {% endblock content_all %}
+
+    </div>
+
+    {% block body_scripts %}
+        <script type="text/javascript" src="{% static "js/vue.js" %}"></script>
+    {% endblock body_scripts %}
+{% endblock body %}
