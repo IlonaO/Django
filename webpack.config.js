@@ -19,32 +19,15 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            'scss': ExtractTextPlugin.extract({
-              use: [
-                {loader: 'css-loader', options: {sourceMap: true}},
-                {loader: 'sass-loader', options: {sourceMap: true}},
-                {loader: 'postcss-loader', options: {sourceMap: true}}
-              ],
-              fallback: 'vue-style-loader'
-            }),
-            'sass': ExtractTextPlugin.extract({
-              use: [
-                {loader: 'css-loader', options: {sourceMap: true}},
-                {loader: 'sass-loader', options: {indentedSyntax: true, sourceMap: true}},
-                {loader: 'postcss-loader', options: {sourceMap: true}}
-              ],
-              fallback: 'vue-style-loader'
-            })
-          }
-        }
+        loader: 'vue-loader'
       },
       {
-        test: /\.sass$/,
-        loader: ExtractTextPlugin.extract({fallback: 'vue-style-loader', use:'css-loader!sass-loader?indentedSyntax!import-glob-loader'}), //# postcss-loader'),
-          exclude: /node_modules/
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.js$/,
