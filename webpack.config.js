@@ -29,13 +29,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules\/(?!(dom7|swiper)\/).*/,
         loader: 'babel-loader'

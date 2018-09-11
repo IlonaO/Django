@@ -7,17 +7,15 @@ module.exports = function (config) {
         reporters: ['progress', 'coverage'],
         port: 9876,
         colors: false,
-        logLevel: config.LOG_INFO,
         autoWatch: true,
         singleRun: true,
         autoWatchBatchDelay: 300,
 
-        browserDisconnectTimeout: 2000, // default 2000
-        browserDisconnectTolerance: 1, // default 0
-        browserNoActivityTimeout: 40000, //default 10000
+        browserDisconnectTimeout: 2000,
+        browserDisconnectTolerance: 1,
+        browserNoActivityTimeout: 40000,
 
         files: [
-            // './frontend/config_test.js',
             './frontend/index.js',
             './frontend/components/*.vue',
             './frontend/components/test/*-spec.js'
