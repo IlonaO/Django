@@ -6,9 +6,8 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/vue.css" %}"/>
 {% endblock %}
 
-
 {% block body %}
-    <a href="{% url 'post_list' %}">Go back to blog</a>
+    <a href="{% url 'post_list' %}">&laquo Go back to blog</a>
     <div id="vue-app">
 
     {% block content_all %}
