@@ -66,9 +66,7 @@ class LoggingInTest(TestCase):
 		self.username = 'someone'
 		self.email = 'test@test.com'
 		self.password = 'somepassword'
-		self.test_user = User.objects.create_user(username=self.username,
-												  email=self.email,
-												  password=self.password)
+		self.test_user = User.objects.create_user(username=self.username, email=self.email, password=self.password)
 		self.test_user.save()
 		self.user = User.objects.get(username="someone")
 		self.client = Client()

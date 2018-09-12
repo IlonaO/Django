@@ -1,4 +1,3 @@
-from restless.exceptions import NotFound
 from restless.dj import DjangoResource
 
 from apps.blog.models import Post
