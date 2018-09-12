@@ -107,8 +107,8 @@ class LoggingInTest(TestCase):
 
 	def test_create_user_error(self):
 		response = self.client.get('/user/create/',
-									{'username': 'user', 'email': 'some@mail.pl',
-									 'password1': self.password, 'password2': self.password})
+								   {'username': 'user', 'email': 'some@mail.pl',
+									'password1': self.password, 'password2': self.password})
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'create_user.html')
 

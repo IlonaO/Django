@@ -227,7 +227,7 @@ class ViewsTestCase(TestCase):
 
 	def test_add_comment_to_post_get_request(self):
 		response = self.client.get('/post/2/comment/',
-									{"author": "comment author", "text": "some comment"})
+								   {"author": "comment author", "text": "some comment"})
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'blog/add_comment_to_post.html')
 
@@ -257,4 +257,3 @@ class ViewsTestCase(TestCase):
 		response = self.client.get('/vue_posts/')
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'blog/base_vue.html')
-
