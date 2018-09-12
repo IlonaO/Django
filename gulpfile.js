@@ -19,7 +19,7 @@ gulp.task('test', function (done) {
 gulp.task('single-test', function (done) {
     new karma.Server({
         configFile: paths.karma,
-        files: [__dirname + '/frontend/components/test/industry-state-chooser-spec.js'],
+        files: [__dirname + '/frontend/components/test/test-name-spec.js'],
         singleRun: true
     }, function (karmaExitStatus) {
         if (karmaExitStatus) {
