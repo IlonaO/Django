@@ -17,10 +17,6 @@ Komponent używany do wyświetlenia postów
       display: flex
       flex: 0 1 auto
       width: 17em
-  .add-new
-    display: flex
-    justify-content: center
-    margin-top: 4em
 </style>
 
 <template>
@@ -32,9 +28,6 @@ Komponent używany do wyświetlenia postów
             <div class="post-container-element" v-for="post in posts" v-bind:key="post.id">
                 <post-element :post="post" v-on:title_clicked=""></post-element>
             </div>
-        </div>
-        <div class="add-new">
-            <button @click="add_new">+</button>
         </div>
     </div>
 </template>
@@ -60,13 +53,9 @@ export default {
         fetch () {
             this.axios.get('get_posts/', {baseURL: '/xhr/', params: {}})
                 .then((response) => {
-                this.posts = response.data.objects;
-            })
-        },
-        add_new () {
-
+                    this.posts = response.data.objects;
+                })
         }
     }
-
 }
 </script>

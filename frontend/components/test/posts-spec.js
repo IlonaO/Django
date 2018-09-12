@@ -30,7 +30,6 @@ describe("posts", () => {
 
     it("Checking methods", () => {
         expect(typeof P.fetch).toBe('function');
-        expect(typeof P.add_new).toBe('function');
     });
 
 
@@ -43,7 +42,6 @@ describe("posts", () => {
 
     it("Check rendering", () => {
         expect(P.$el.querySelector('.title').textContent).toBe('Posts');
-        expect(P.$el.querySelector('button').textContent).toBe('+');
     });
 
 });

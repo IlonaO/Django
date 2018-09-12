@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import PostElement from '../post-element.vue'
 import { mount } from '@vue/test-utils'
-import VueTestUtils from '@vue/test-utils'
 
 
 Vue.use(VueI18n);
@@ -55,7 +54,7 @@ describe("post-element", () => {
     it("Rendering check", () => {
         expect(PE.$el.querySelector('.post-title').textContent).toBe('Title');
         expect(PE.$el.querySelector('.post-author').textContent).toBe('Author: someuser');
-        expect(PE.$el.querySelector('.post-text').textContent).toBe('...'); //bacause ellipsis
+        expect(PE.$el.querySelector('.post-text').textContent).toBe('Some post content ');
         expect(PE.$el.querySelector('.post-date').textContent).toBe('10.08.2018');
     });
 
