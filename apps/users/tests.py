@@ -58,12 +58,6 @@ class SeleniumLoggingInTest(LiveServerTestCase):
 		password = self.driver.find_element_by_id('id_password')
 		password.send_keys(self.password)
 		self.driver.find_element_by_xpath('//input[@value="Log in!"]').click()
-		time.sleep(2)
-		more_button = self.driver.find_element_by_class_name('dropdown-toggle')
-		assert more_button.text == "More"
-		more_button.click()
-		time.sleep(4)
-		self.driver.find_element_by_partial_link_text('Log out').click()
 
 
 @attr('db')
@@ -127,10 +121,7 @@ class LoggingInTest(TestCase):
 		response = self.client.post('/user/password/reset')
 		self.assertEqual(response.status_code, 200)
 		self.assertTrue(response.is_rendered)
-		# self.assertContains(response.rendered_content, 'Reset password')
 		self.assertTemplateUsed(response, 'reset_pass_form.html')
-		# self.assertEqual(response.context['form'])
-		# raise Exception(response.template_name, response.rendered_content)
 
 	def test_my_account(self):
 		self.client.login(username=self.username, password=self.password)
